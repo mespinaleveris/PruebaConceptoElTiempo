@@ -109,7 +109,7 @@
                     <connections>
                         <outlet property="apoloListSearchBar" destination="v1P-hS-Fgg" id="3un-Va-fqE"/>
                         <outlet property="apoloListTableView" destination="6Le-aC-4vs" id="InN-eM-kqF"/>
-                        <segue destination="r4S-V9-BrI" kind="show" identifier="segueToApoloDetail" id="0RY-c5-Bqs"/>
+                        <segue destination="r4S-V9-BrI" kind="show" identifier="segueToDetailApolo" id="0RY-c5-Bqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -119,7 +119,7 @@
         <!--Detail Apolo View Controller-->
         <scene sceneID="HsG-fI-jlD">
             <objects>
-                <viewController id="r4S-V9-BrI" customClass="DetailApoloViewController" customModule="PruebaConceptoElTiempo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailApoloViewController" id="r4S-V9-BrI" customClass="DetailApoloViewController" customModule="PruebaConceptoElTiempo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sX3-rC-juC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,13 +134,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-6o-Yge">
-                                        <rect key="frame" x="8" y="225" width="304" height="20"/>
+                                        <rect key="frame" x="15" y="225" width="290" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-7i-7GG">
-                                        <rect key="frame" x="137" y="242" width="46" height="40"/>
+                                        <rect key="frame" x="137" y="250" width="46" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ktw-Or-QDr"/>
                                             <constraint firstAttribute="height" constant="40" id="qX8-7i-2dY"/>
@@ -148,24 +148,24 @@
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-vr-o1k">
-                                        <rect key="frame" x="8" y="290" width="304" height="16.5"/>
+                                        <rect key="frame" x="15" y="298" width="290" height="16.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="NuA-7i-7GG" firstAttribute="top" secondItem="IYY-6o-Yge" secondAttribute="bottom" constant="-3" id="5AD-1v-eiC"/>
-                                    <constraint firstAttribute="trailing" secondItem="IYY-6o-Yge" secondAttribute="trailing" constant="8" id="66T-9o-8nd"/>
+                                    <constraint firstItem="NuA-7i-7GG" firstAttribute="top" secondItem="IYY-6o-Yge" secondAttribute="bottom" constant="5" id="5AD-1v-eiC"/>
+                                    <constraint firstAttribute="trailing" secondItem="IYY-6o-Yge" secondAttribute="trailing" constant="15" id="66T-9o-8nd"/>
                                     <constraint firstItem="IYY-6o-Yge" firstAttribute="top" secondItem="IQ4-d5-5Cc" secondAttribute="bottom" constant="8" symbolic="YES" id="AGe-ba-CaA"/>
                                     <constraint firstItem="n2j-vr-o1k" firstAttribute="top" secondItem="NuA-7i-7GG" secondAttribute="bottom" constant="8" symbolic="YES" id="FDQ-u8-bYz"/>
                                     <constraint firstItem="IQ4-d5-5Cc" firstAttribute="top" secondItem="f9m-fa-Np3" secondAttribute="top" id="JRW-9b-fgk"/>
-                                    <constraint firstItem="n2j-vr-o1k" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" constant="8" id="LZZ-pZ-RKG"/>
+                                    <constraint firstItem="n2j-vr-o1k" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" constant="15" id="LZZ-pZ-RKG"/>
                                     <constraint firstItem="IQ4-d5-5Cc" firstAttribute="centerX" secondItem="f9m-fa-Np3" secondAttribute="centerX" id="SuT-94-R7a"/>
                                     <constraint firstAttribute="trailing" secondItem="IQ4-d5-5Cc" secondAttribute="trailing" id="Xu5-wf-whE"/>
                                     <constraint firstItem="IQ4-d5-5Cc" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" id="YB3-QN-yA8"/>
-                                    <constraint firstItem="IYY-6o-Yge" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" constant="8" id="le2-JO-xtP"/>
-                                    <constraint firstAttribute="trailing" secondItem="n2j-vr-o1k" secondAttribute="trailing" constant="8" id="tqT-XC-llg"/>
+                                    <constraint firstItem="IYY-6o-Yge" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" constant="15" id="le2-JO-xtP"/>
+                                    <constraint firstAttribute="trailing" secondItem="n2j-vr-o1k" secondAttribute="trailing" constant="15" id="tqT-XC-llg"/>
                                     <constraint firstItem="NuA-7i-7GG" firstAttribute="centerX" secondItem="f9m-fa-Np3" secondAttribute="centerX" id="zCy-lQ-N3g"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="4ik-b2-3ru"/>

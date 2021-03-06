@@ -19,6 +19,8 @@ class ApoloListViewController: UIViewController
     var searching: Bool = false
     var filtered:[String] = []
     
+    var apoloItemSelected = ApoloModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,8 @@ class ApoloListViewController: UIViewController
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        getApoloList()
+        self.apoloListTableView.style
+        self.getApoloList()
     }
 
     
@@ -93,6 +96,8 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApoloViewCell", for: indexPath) as! ApoloViewCell
         
+        cell.selectionStyle = .none
+        
         let apoloData: ApoloDataModel = (apoloItem.apoloDataList?[0])!
         let apoloLinkList: [ApoloLinksModel] = apoloItem.apoloLinks ?? []
         
@@ -110,6 +115,20 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        if self.searching
+        {
+            self.apoloItemSelected = self.searchedApoloList[indexPath.row]
+        }
+        else
+        {
+            self.apoloItemSelected = self.apoloList[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "segueToDetailApolo", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -160,16 +179,15 @@ extension ApoloListViewController
     }
 }
 
-/*extension ApoloListViewController
+extension ApoloListViewController
 {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "segueToDetailApolo"
         {
-            if segue.identifier == "segueShowProductsFromCategory"
-            {
-                /*let apoloDetailViewController = segue.destination as! ProductsViewController
-                productsViewController.productCategory = self.categorySelected
-                productsViewController.isFromCategories = true*/
-            }
+            let detailApoloViewController = segue.destination as! DetailApoloViewController
+            detailApoloViewController.apoloItem = self.apoloItemSelected
         }
-}*/
+    }
+}
 

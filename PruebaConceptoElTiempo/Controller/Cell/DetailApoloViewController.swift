@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailApoloViewController: UIViewController
 {
@@ -19,8 +20,24 @@ class DetailApoloViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.setupView()
     }
     
+    
+}
 
+extension DetailApoloViewController
+{
+    func setupView()
+    {
+        apoloTitleLabel.text = apoloItem.apoloTitle
+        apoloDescLabel.text = apoloItem.apoloDesc
+        
+        if let url = URL(string: apoloItem.apoloImageUrl!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        {
+            self.apoloImage.kf.setImage(with: url, options: [
+                .transition(.fade(0.5))
+            ])
+        }
+    }
 }
