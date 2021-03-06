@@ -28,8 +28,7 @@ class ApoloListViewController: UIViewController
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        self.apoloListTableView.style
-        self.getApoloList()
+        self.getSavedList()
     }
 
     
@@ -139,6 +138,30 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
 
 extension ApoloListViewController
 {
+    func getSavedList()
+    {
+        let apoloListFromSaved = ApoloModel.loadApoloList()
+        
+        if apoloListFromSaved.count > 0
+        {
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true)
+            }
+            
+            self.apoloList = apoloListFromSaved
+            
+            self.apoloListTableView.reloadData()
+            
+            print("LISTA CARGADA DE LA MEMORIA")
+        }
+        else
+        {
+            self.getApoloList()
+            
+            print("CARGANDO LISTA DESDE EL API")
+        }
+    }
+    
     func getApoloList()
     {
         ConnectionManager.shareInstance.getApoloList() { (response, error) in
@@ -165,9 +188,12 @@ extension ApoloListViewController
                     apoloList[i].apoloDesc = apoloDesc
                     apoloList[i].apoloKeywords = apoloKeywords
                     apoloList[i].apoloImageUrl = apoloImageUrl
+                    apoloList[i].apoloIsFavorite = false
                 }
                 
                 self.apoloList = apoloList
+                ApoloModel.saveApoloList(apoloList: self.apoloList)
+                
                 self.apoloListTableView.reloadData()
             }
             

@@ -33,11 +33,17 @@ struct ApoloModel: Codable
     var apoloDesc: String?
     var apoloKeywords: [String]?
     var apoloImageUrl: String?
+    var apoloIsFavorite: Bool?
     var apoloLinks: [ApoloLinksModel]?
     var apoloDataList: [ApoloDataModel]?
     
     enum CodingKeys: String, CodingKey
     {
+        case apoloTitle
+        case apoloDesc
+        case apoloKeywords
+        case apoloImageUrl
+        case apoloIsFavorite
         case apoloLinks = "links"
         case apoloDataList = "data"
     }
@@ -66,5 +72,31 @@ struct ApoloDataModel: Codable
         case apoloDataTitle = "title"
         case apoloDataDesc = "description"
         case apoloDataKewords = "keywords"
+    }
+}
+
+extension ApoloModel
+{
+    public static func saveApoloList(apoloList: [ApoloModel]?)
+    {
+        guard let apoloListToSave = apoloList else {
+            
+            return
+        }
+        
+        let apoloListData = try! JSONEncoder().encode(apoloListToSave)
+        UserDefaults.standard.set(apoloListData, forKey: "apoloListSaved")
+    }
+    
+    public static func loadApoloList() -> [ApoloModel]
+    {
+        var apoloList: [ApoloModel] = []
+        
+        if let apoloListData = UserDefaults.standard.data(forKey: "apoloListSaved")
+        {
+            apoloList = try! JSONDecoder().decode([ApoloModel].self, from: apoloListData)
+        }
+                
+        return apoloList
     }
 }
