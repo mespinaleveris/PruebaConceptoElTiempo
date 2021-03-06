@@ -23,7 +23,6 @@ class ApoloListViewController: UIViewController
         super.viewDidLoad()
         
         self.apoloListTableView.alwaysBounceVertical = true
-        self.apoloListSearchBar.showsCancelButton = true
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
@@ -38,7 +37,16 @@ extension ApoloListViewController: UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        self.searchedApoloList = apoloList.filter { $0.apoloTitle!.lowercased().prefix(searchText.count) == searchText.lowercased() }
+        self.searchedApoloList.removeAll()
+        
+        for apoloItem in self.apoloList
+        {
+            if apoloItem.apoloKeywords!.filter({ $0.lowercased().prefix(searchText.count) == searchText.lowercased() }).count > 0
+            {
+                self.searchedApoloList.append(apoloItem)
+            }
+        }
+        
         searching = true
         
         apoloListTableView.reloadData()
@@ -101,8 +109,6 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         
-        
-        
         return cell
     }
     
@@ -128,6 +134,7 @@ extension ApoloListViewController
                 {
                     let apoloTitle = apoloList[i].apoloDataList![0].apoloDataTitle ?? ""
                     let apoloDesc = apoloList[i].apoloDataList![0].apoloDataDesc ?? ""
+                    let apoloKeywords = apoloList[i].apoloDataList![0].apoloDataKewords ?? []
                     var apoloImageUrl = ""
                     
                     if let apoloLink = apoloList[i].apoloLinks?.filter({ $0.apoloLinkRel == "preview" }).first
@@ -137,6 +144,7 @@ extension ApoloListViewController
                     
                     apoloList[i].apoloTitle = apoloTitle
                     apoloList[i].apoloDesc = apoloDesc
+                    apoloList[i].apoloKeywords = apoloKeywords
                     apoloList[i].apoloImageUrl = apoloImageUrl
                 }
                 

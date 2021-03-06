@@ -31,6 +31,7 @@ struct ApoloModel: Codable
 {
     var apoloTitle: String?
     var apoloDesc: String?
+    var apoloKeywords: [String]?
     var apoloImageUrl: String?
     var apoloLinks: [ApoloLinksModel]?
     var apoloDataList: [ApoloDataModel]?
@@ -58,10 +59,12 @@ struct ApoloDataModel: Codable
 {
     var apoloDataTitle: String?
     var apoloDataDesc: String?
+    var apoloDataKewords: [String]?
     
     enum CodingKeys: String, CodingKey
     {
         case apoloDataTitle = "title"
         case apoloDataDesc = "description"
+        case apoloDataKewords = "keywords"
     }
 }

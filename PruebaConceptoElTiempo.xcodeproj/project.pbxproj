@@ -10,6 +10,7 @@
 		8108876425F30523003E886C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108876325F30523003E886C /* ConnectionManager.swift */; };
 		8108876C25F305AC003E886C /* ApoloModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108876B25F305AC003E886C /* ApoloModel.swift */; };
 		8108877525F32273003E886C /* ApoloViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108877425F32273003E886C /* ApoloViewCell.swift */; };
+		8108878425F35CB2003E886C /* DetailApoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108878325F35CB1003E886C /* DetailApoloViewController.swift */; };
 		81AF57D125F2ABB4006FC0A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D025F2ABB4006FC0A4 /* AppDelegate.swift */; };
 		81AF57D325F2ABB4006FC0A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D225F2ABB4006FC0A4 /* SceneDelegate.swift */; };
 		81AF57D525F2ABB4006FC0A4 /* ApoloListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D425F2ABB4006FC0A4 /* ApoloListViewController.swift */; };
@@ -43,6 +44,7 @@
 		8108876325F30523003E886C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		8108876B25F305AC003E886C /* ApoloModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoloModel.swift; sourceTree = "<group>"; };
 		8108877425F32273003E886C /* ApoloViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoloViewCell.swift; sourceTree = "<group>"; };
+		8108878325F35CB1003E886C /* DetailApoloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailApoloViewController.swift; sourceTree = "<group>"; };
 		81AF57CD25F2ABB4006FC0A4 /* PruebaConceptoElTiempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebaConceptoElTiempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AF57D025F2ABB4006FC0A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81AF57D225F2ABB4006FC0A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8108877425F32273003E886C /* ApoloViewCell.swift */,
+				8108878325F35CB1003E886C /* DetailApoloViewController.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				8108876C25F305AC003E886C /* ApoloModel.swift in Sources */,
 				81AF57D125F2ABB4006FC0A4 /* AppDelegate.swift in Sources */,
 				81AF57D325F2ABB4006FC0A4 /* SceneDelegate.swift in Sources */,
+				8108878425F35CB2003E886C /* DetailApoloViewController.swift in Sources */,
 				8108877525F32273003E886C /* ApoloViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
