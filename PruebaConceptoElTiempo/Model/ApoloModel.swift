@@ -29,6 +29,9 @@ struct CollectionApolo: Codable
 
 struct ApoloModel: Codable
 {
+    var apoloTitle: String?
+    var apoloDesc: String?
+    var apoloImageUrl: String?
     var apoloLinks: [ApoloLinksModel]?
     var apoloDataList: [ApoloDataModel]?
     

@@ -36,6 +36,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="v1P-hS-Fgg">
                                 <rect key="frame" x="0.0" y="44" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="E35-gj-HAB"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Le-aC-4vs">
                                 <rect key="frame" x="0.0" y="100" width="320" height="468"/>
@@ -104,6 +107,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dfJ-CH-gRz"/>
                     <connections>
+                        <outlet property="apoloListSearchBar" destination="v1P-hS-Fgg" id="3un-Va-fqE"/>
                         <outlet property="apoloListTableView" destination="6Le-aC-4vs" id="InN-eM-kqF"/>
                         <segue destination="r4S-V9-BrI" kind="show" identifier="segueToApoloDetail" id="0RY-c5-Bqs"/>
                     </connections>

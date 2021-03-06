@@ -12,19 +12,43 @@ import MBProgressHUD
 class ApoloListViewController: UIViewController
 {
     @IBOutlet weak var apoloListTableView: UITableView!
+    @IBOutlet weak var apoloListSearchBar: UISearchBar!
     
     var apoloList: [ApoloModel] = [];
+    var searchedApoloList: [ApoloModel] = [];
+    var searching: Bool = false
+    var filtered:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.apoloListTableView.alwaysBounceVertical = true
+        self.apoloListSearchBar.showsCancelButton = true
+        
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
         getApoloList()
     }
 
     
+}
+
+extension ApoloListViewController: UISearchBarDelegate
+{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        self.searchedApoloList = apoloList.filter { $0.apoloTitle!.lowercased().prefix(searchText.count) == searchText.lowercased() }
+        searching = true
+        
+        apoloListTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        apoloListTableView.reloadData()
+    }
 }
 
 extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
@@ -36,12 +60,28 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.apoloList.count
+        if searching
+        {
+            return searchedApoloList.count
+        }
+        else
+        {
+            return self.apoloList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let apoloItem: ApoloModel = self.apoloList[indexPath.row]
+        var apoloItem: ApoloModel = ApoloModel()
+        
+        if searching
+        {
+            apoloItem = self.searchedApoloList[indexPath.row]
+        }
+        else
+        {
+            apoloItem = self.apoloList[indexPath.row]
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApoloViewCell", for: indexPath) as! ApoloViewCell
         
@@ -53,7 +93,7 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         
         if let apoloLink = apoloLinkList.filter({ $0.apoloLinkRel == "preview" }).first
         {
-            if let url = URL(string: apoloLink.apoloLinkUrl!)
+            if let url = URL(string: apoloLink.apoloLinkUrl!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
             {
                 cell.apoloImage.kf.setImage(with: url, options: [
                     .transition(.fade(0.5))
@@ -82,8 +122,24 @@ extension ApoloListViewController
                 MBProgressHUD.hide(for: self.view, animated: true)
             }
             
-            if let apoloList = response?.collecctionApolo?.apoloItems
+            if var apoloList = response?.collecctionApolo?.apoloItems
             {
+                for i in 0..<apoloList.count
+                {
+                    let apoloTitle = apoloList[i].apoloDataList![0].apoloDataTitle ?? ""
+                    let apoloDesc = apoloList[i].apoloDataList![0].apoloDataDesc ?? ""
+                    var apoloImageUrl = ""
+                    
+                    if let apoloLink = apoloList[i].apoloLinks?.filter({ $0.apoloLinkRel == "preview" }).first
+                    {
+                        apoloImageUrl = apoloLink.apoloLinkUrl ?? ""
+                    }
+                    
+                    apoloList[i].apoloTitle = apoloTitle
+                    apoloList[i].apoloDesc = apoloDesc
+                    apoloList[i].apoloImageUrl = apoloImageUrl
+                }
+                
                 self.apoloList = apoloList
                 self.apoloListTableView.reloadData()
             }
