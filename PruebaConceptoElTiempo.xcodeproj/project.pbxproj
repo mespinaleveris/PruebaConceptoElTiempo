@@ -3,13 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8108876425F30523003E886C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108876325F30523003E886C /* ConnectionManager.swift */; };
+		8108876C25F305AC003E886C /* ApoloModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108876B25F305AC003E886C /* ApoloModel.swift */; };
+		8108877525F32273003E886C /* ApoloViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108877425F32273003E886C /* ApoloViewCell.swift */; };
 		81AF57D125F2ABB4006FC0A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D025F2ABB4006FC0A4 /* AppDelegate.swift */; };
 		81AF57D325F2ABB4006FC0A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D225F2ABB4006FC0A4 /* SceneDelegate.swift */; };
-		81AF57D525F2ABB4006FC0A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D425F2ABB4006FC0A4 /* ViewController.swift */; };
+		81AF57D525F2ABB4006FC0A4 /* ApoloListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57D425F2ABB4006FC0A4 /* ApoloListViewController.swift */; };
 		81AF57D825F2ABB4006FC0A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AF57D625F2ABB4006FC0A4 /* Main.storyboard */; };
 		81AF57DA25F2ABB5006FC0A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AF57D925F2ABB5006FC0A4 /* Assets.xcassets */; };
 		81AF57DD25F2ABB5006FC0A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AF57DB25F2ABB5006FC0A4 /* LaunchScreen.storyboard */; };
@@ -37,10 +40,13 @@
 
 /* Begin PBXFileReference section */
 		7EEA0C6D2EF93B9BEE7D5735 /* Pods_PruebaConceptoElTiempo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PruebaConceptoElTiempo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8108876325F30523003E886C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		8108876B25F305AC003E886C /* ApoloModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoloModel.swift; sourceTree = "<group>"; };
+		8108877425F32273003E886C /* ApoloViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoloViewCell.swift; sourceTree = "<group>"; };
 		81AF57CD25F2ABB4006FC0A4 /* PruebaConceptoElTiempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebaConceptoElTiempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AF57D025F2ABB4006FC0A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81AF57D225F2ABB4006FC0A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		81AF57D425F2ABB4006FC0A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81AF57D425F2ABB4006FC0A4 /* ApoloListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoloListViewController.swift; sourceTree = "<group>"; };
 		81AF57D725F2ABB4006FC0A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81AF57D925F2ABB5006FC0A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81AF57DC25F2ABB5006FC0A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -89,6 +95,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8108875E25F304D8003E886C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8108876225F3050F003E886C /* ConnectionManager */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8108876225F3050F003E886C /* ConnectionManager */ = {
+			isa = PBXGroup;
+			children = (
+				8108876325F30523003E886C /* ConnectionManager.swift */,
+			);
+			path = ConnectionManager;
+			sourceTree = "<group>";
+		};
+		8108877325F32259003E886C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8108877425F32273003E886C /* ApoloViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		81AF57C425F2ABB4006FC0A4 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +144,7 @@
 		81AF57CF25F2ABB4006FC0A4 /* PruebaConceptoElTiempo */ = {
 			isa = PBXGroup;
 			children = (
+				8108875E25F304D8003E886C /* Data */,
 				81AF586525F2F911006FC0A4 /* Model */,
 				81AF586625F2F918006FC0A4 /* ViewModel */,
 				81AF586425F2F904006FC0A4 /* Controller */,
@@ -148,7 +179,8 @@
 		81AF586425F2F904006FC0A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				81AF57D425F2ABB4006FC0A4 /* ViewController.swift */,
+				8108877325F32259003E886C /* Cell */,
+				81AF57D425F2ABB4006FC0A4 /* ApoloListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +188,7 @@
 		81AF586525F2F911006FC0A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8108876B25F305AC003E886C /* ApoloModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,7 +206,6 @@
 				DF945DF2CBAFB35BD9D2B857 /* Pods-PruebaConceptoElTiempo.debug.xcconfig */,
 				B430D1385456D9FD52404BA3 /* Pods-PruebaConceptoElTiempo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -351,9 +383,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AF57D525F2ABB4006FC0A4 /* ViewController.swift in Sources */,
+				81AF57D525F2ABB4006FC0A4 /* ApoloListViewController.swift in Sources */,
+				8108876425F30523003E886C /* ConnectionManager.swift in Sources */,
+				8108876C25F305AC003E886C /* ApoloModel.swift in Sources */,
 				81AF57D125F2ABB4006FC0A4 /* AppDelegate.swift in Sources */,
 				81AF57D325F2ABB4006FC0A4 /* SceneDelegate.swift in Sources */,
+				8108877525F32273003E886C /* ApoloViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

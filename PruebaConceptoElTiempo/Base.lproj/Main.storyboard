@@ -1,24 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Y7-rY-QEw">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Tb4-mp-kMk">
+            <objects>
+                <navigationController id="9Y7-rY-QEw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Aet-i3-Q4R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="SL6-Az-i8z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tXW-Oi-pEx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1059" y="41"/>
+        </scene>
+        <!--Apolo List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApoloListViewController" id="BYZ-38-t0r" customClass="ApoloListViewController" customModule="PruebaConceptoElTiempo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="v1P-hS-Fgg">
+                                <rect key="frame" x="0.0" y="44" width="320" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Le-aC-4vs">
+                                <rect key="frame" x="0.0" y="100" width="320" height="468"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ApoloViewCell" rowHeight="80" id="uVV-7R-Cmb" customClass="ApoloViewCell" customModule="PruebaConceptoElTiempo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uVV-7R-Cmb" id="aSp-PF-YvM">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QxQ-L4-b6C">
+                                                    <rect key="frame" x="16" y="16" width="72" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="72" id="B46-Wk-9BY"/>
+                                                        <constraint firstAttribute="height" constant="48" id="nJb-OJ-48r"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCU-eV-QBc">
+                                                    <rect key="frame" x="104" y="0.0" width="216" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu5-ss-Syy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="80"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="PCU-eV-QBc" secondAttribute="bottom" id="3TM-ux-Oeo"/>
+                                                <constraint firstItem="PCU-eV-QBc" firstAttribute="leading" secondItem="QxQ-L4-b6C" secondAttribute="trailing" constant="16" id="Z1Q-vx-MgN"/>
+                                                <constraint firstAttribute="trailing" secondItem="PCU-eV-QBc" secondAttribute="trailing" id="Zu1-vf-aDX"/>
+                                                <constraint firstItem="PCU-eV-QBc" firstAttribute="top" secondItem="aSp-PF-YvM" secondAttribute="top" id="hHc-21-HWA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="QxQ-L4-b6C" firstAttribute="centerY" secondItem="uVV-7R-Cmb" secondAttribute="centerY" id="U8P-oj-Pbh"/>
+                                            <constraint firstItem="QxQ-L4-b6C" firstAttribute="leading" secondItem="uVV-7R-Cmb" secondAttribute="leading" constant="16" id="bvP-vk-YtB"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="apoloImage" destination="QxQ-L4-b6C" id="cEh-S6-2TW"/>
+                                            <outlet property="apoloTitle" destination="Xu5-ss-Syy" id="tz3-iO-fK4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="HeC-IK-jrr"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Zct-YC-FLu"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v1P-hS-Fgg" secondAttribute="trailing" id="2g3-8h-hy9"/>
+                            <constraint firstItem="v1P-hS-Fgg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8WM-nO-KZz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Le-aC-4vs" secondAttribute="trailing" id="P6p-rQ-cq9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6Le-aC-4vs" secondAttribute="bottom" id="oaa-uL-5Oo"/>
+                            <constraint firstItem="6Le-aC-4vs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tNA-h0-Nb9"/>
+                            <constraint firstItem="6Le-aC-4vs" firstAttribute="top" secondItem="v1P-hS-Fgg" secondAttribute="bottom" id="x9b-zz-tHk"/>
+                            <constraint firstItem="v1P-hS-Fgg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zEv-qw-iak"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dfJ-CH-gRz"/>
+                    <connections>
+                        <outlet property="apoloListTableView" destination="6Le-aC-4vs" id="InN-eM-kqF"/>
+                        <segue destination="r4S-V9-BrI" kind="show" identifier="segueToApoloDetail" id="0RY-c5-Bqs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-172.5" y="41.197183098591552"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HsG-fI-jlD">
+            <objects>
+                <viewController id="r4S-V9-BrI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sX3-rC-juC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Sem-Qh-KB4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QK4-Je-4xr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDH-8P-BNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669" y="41"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
