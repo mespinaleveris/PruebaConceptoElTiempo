@@ -58,22 +58,33 @@
                                                         <constraint firstAttribute="height" constant="48" id="nJb-OJ-48r"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCU-eV-QBc">
-                                                    <rect key="frame" x="104" y="0.0" width="216" height="80"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PCU-eV-QBc">
+                                                    <rect key="frame" x="104" y="0.0" width="206" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu5-ss-Syy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="80"/>
+                                                            <rect key="frame" x="0.0" y="33" width="171" height="14"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-0a-tjK">
+                                                            <rect key="frame" x="171" y="22.5" width="35" height="35"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="35" id="HcL-lB-XnN"/>
+                                                                <constraint firstAttribute="width" constant="35" id="SD4-8n-AkS"/>
+                                                            </constraints>
+                                                            <state key="normal" image="icon_favorite_off"/>
+                                                            <connections>
+                                                                <action selector="setFavorite:" destination="uVV-7R-Cmb" eventType="touchUpInside" id="zHq-wm-Rl3"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="PCU-eV-QBc" secondAttribute="bottom" id="3TM-ux-Oeo"/>
                                                 <constraint firstItem="PCU-eV-QBc" firstAttribute="leading" secondItem="QxQ-L4-b6C" secondAttribute="trailing" constant="16" id="Z1Q-vx-MgN"/>
-                                                <constraint firstAttribute="trailing" secondItem="PCU-eV-QBc" secondAttribute="trailing" id="Zu1-vf-aDX"/>
+                                                <constraint firstAttribute="trailing" secondItem="PCU-eV-QBc" secondAttribute="trailing" constant="10" id="Zu1-vf-aDX"/>
                                                 <constraint firstItem="PCU-eV-QBc" firstAttribute="top" secondItem="aSp-PF-YvM" secondAttribute="top" id="hHc-21-HWA"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -82,6 +93,7 @@
                                             <constraint firstItem="QxQ-L4-b6C" firstAttribute="leading" secondItem="uVV-7R-Cmb" secondAttribute="leading" constant="16" id="bvP-vk-YtB"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="apoloFavoriteButton" destination="GeA-0a-tjK" id="8Pl-3B-med"/>
                                             <outlet property="apoloImage" destination="QxQ-L4-b6C" id="cEh-S6-2TW"/>
                                             <outlet property="apoloTitle" destination="Xu5-ss-Syy" id="tz3-iO-fK4"/>
                                         </connections>
@@ -133,19 +145,22 @@
                                             <constraint firstAttribute="height" constant="217" id="C5d-Lb-mb8"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-6o-Yge">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-6o-Yge">
                                         <rect key="frame" x="15" y="225" width="290" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-7i-7GG">
-                                        <rect key="frame" x="137" y="250" width="46" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-7i-7GG">
+                                        <rect key="frame" x="140" y="250" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ktw-Or-QDr"/>
                                             <constraint firstAttribute="height" constant="40" id="qX8-7i-2dY"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="icon_favorite_off"/>
+                                        <connections>
+                                            <action selector="setFavorite:" destination="r4S-V9-BrI" eventType="touchUpInside" id="nKT-n1-yP8"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-vr-o1k">
                                         <rect key="frame" x="15" y="298" width="290" height="16.5"/>
@@ -195,6 +210,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_favorite_off" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

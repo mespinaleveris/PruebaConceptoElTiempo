@@ -9,6 +9,11 @@ import UIKit
 import Kingfisher
 import MBProgressHUD
 
+protocol ApoloListViewProtocol
+{
+    func updateFavoriteInList(name: String, isFavorite: Bool)
+}
+
 class ApoloListViewController: UIViewController
 {
     @IBOutlet weak var apoloListTableView: UITableView!
@@ -102,6 +107,7 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         
         
         cell.apoloTitle.text = apoloData.apoloDataTitle ?? ""
+        cell.apoloFavoriteButton.setImage(UIImage(named: apoloItem.apoloIsFavorite! ? "icon_favorite_on" : "icon_favorite_off"), for: .normal)
         
         if let apoloLink = apoloLinkList.filter({ $0.apoloLinkRel == "preview" }).first
         {
@@ -212,8 +218,29 @@ extension ApoloListViewController
         if segue.identifier == "segueToDetailApolo"
         {
             let detailApoloViewController = segue.destination as! DetailApoloViewController
+            //detailApoloViewController.delegate = self
             detailApoloViewController.apoloItem = self.apoloItemSelected
         }
+    }
+}
+
+extension ApoloListViewController: ApoloListViewProtocol
+{
+    func updateFavoriteInList(name: String, isFavorite: Bool)
+    {
+        for i in 0..<self.apoloList.count
+        {
+            if apoloList[i].apoloTitle == name
+            {
+                apoloList[i].apoloIsFavorite = isFavorite
+                
+                break
+            }
+        }
+        
+        //self.apoloListSearchBar.set
+        //self.searching = false
+        self.apoloListTableView.reloadData()
     }
 }
 

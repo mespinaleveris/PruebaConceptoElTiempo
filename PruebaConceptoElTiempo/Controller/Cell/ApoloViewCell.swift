@@ -11,10 +11,20 @@ class ApoloViewCell: UITableViewCell
 {
     @IBOutlet weak var apoloImage: UIImageView!
     @IBOutlet weak var apoloTitle: UILabel!
+    @IBOutlet weak var apoloFavoriteButton: UIButton!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        
+    }
+    
+}
+
+extension ApoloViewCell
+{
+    @IBAction func setFavorite(_ sender: Any)
+    {
         
     }
 }

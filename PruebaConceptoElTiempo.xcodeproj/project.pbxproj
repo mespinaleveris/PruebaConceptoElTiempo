@@ -117,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				8108877425F32273003E886C /* ApoloViewCell.swift */,
-				8108878325F35CB1003E886C /* DetailApoloViewController.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -184,6 +183,7 @@
 			children = (
 				8108877325F32259003E886C /* Cell */,
 				81AF57D425F2ABB4006FC0A4 /* ApoloListViewController.swift */,
+				8108878325F35CB1003E886C /* DetailApoloViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

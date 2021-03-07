@@ -16,6 +16,7 @@ class DetailApoloViewController: UIViewController
     @IBOutlet weak var apoloFavoriteButton: UIButton!
     
     var apoloItem: ApoloModel = ApoloModel()
+    var delegate: ApoloListViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,13 @@ class DetailApoloViewController: UIViewController
         self.setupView()
     }
     
-    
+    @IBAction func setFavorite(_ sender: Any)
+    {
+        apoloItem.apoloIsFavorite = !apoloItem.apoloIsFavorite!
+        delegate?.updateFavoriteInList(name: apoloItem.apoloTitle!, isFavorite: apoloItem.apoloIsFavorite!)
+        
+        self.setFavoriteButton(buttonState: apoloItem.apoloIsFavorite!)
+    }
 }
 
 extension DetailApoloViewController
@@ -33,11 +40,25 @@ extension DetailApoloViewController
         apoloTitleLabel.text = apoloItem.apoloTitle
         apoloDescLabel.text = apoloItem.apoloDesc
         
+        self.setFavoriteButton(buttonState: apoloItem.apoloIsFavorite!)
+        
         if let url = URL(string: apoloItem.apoloImageUrl!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         {
             self.apoloImage.kf.setImage(with: url, options: [
                 .transition(.fade(0.5))
             ])
+        }
+    }
+    
+    func setFavoriteButton(buttonState: Bool)
+    {
+        if buttonState
+        {
+            self.apoloFavoriteButton.setImage(UIImage(named: "icon_favorite_on"), for: .normal)
+        }
+        else
+        {
+            self.apoloFavoriteButton.setImage(UIImage(named: "icon_favorite_off"), for: .normal)
         }
     }
 }
