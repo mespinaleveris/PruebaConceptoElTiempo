@@ -9,6 +9,7 @@ target 'PruebaConceptoElTiempo' do
     pod 'Alamofire', '~> 5.0'
     pod 'Kingfisher', '~> 5.0'
     pod 'MBProgressHUD', '~> 1.2.0'
+    pod 'IQKeyboardManagerSwift'
 
     project 'PruebaConceptoElTiempo.xcodeproj'
 end

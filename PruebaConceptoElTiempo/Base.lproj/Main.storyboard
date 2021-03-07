@@ -136,52 +136,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9m-fa-Np3">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9m-fa-Np3">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IQ4-d5-5Cc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLL-qK-Zje">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="332.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IQ4-d5-5Cc">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="217" id="C5d-Lb-mb8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-7i-7GG">
+                                                <rect key="frame" x="140" y="253" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ktw-Or-QDr"/>
+                                                    <constraint firstAttribute="height" constant="40" id="qX8-7i-2dY"/>
+                                                </constraints>
+                                                <state key="normal" image="icon_favorite_off"/>
+                                                <connections>
+                                                    <action selector="setFavorite:" destination="r4S-V9-BrI" eventType="touchUpInside" id="nKT-n1-yP8"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-vr-o1k">
+                                                <rect key="frame" x="15" y="301" width="290" height="16.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-6o-Yge">
+                                                <rect key="frame" x="15" y="225" width="290" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="217" id="C5d-Lb-mb8"/>
+                                            <constraint firstItem="IQ4-d5-5Cc" firstAttribute="leading" secondItem="lLL-qK-Zje" secondAttribute="leading" id="1Bt-N2-jrJ"/>
+                                            <constraint firstItem="IYY-6o-Yge" firstAttribute="top" secondItem="IQ4-d5-5Cc" secondAttribute="bottom" constant="8" symbolic="YES" id="BC5-jS-VjG"/>
+                                            <constraint firstAttribute="bottom" secondItem="n2j-vr-o1k" secondAttribute="bottom" constant="15" id="Gkk-VC-nGF"/>
+                                            <constraint firstItem="n2j-vr-o1k" firstAttribute="leading" secondItem="lLL-qK-Zje" secondAttribute="leading" constant="15" id="IEA-kx-Uyg"/>
+                                            <constraint firstItem="IQ4-d5-5Cc" firstAttribute="top" secondItem="lLL-qK-Zje" secondAttribute="top" id="PUd-3o-l16"/>
+                                            <constraint firstItem="NuA-7i-7GG" firstAttribute="top" secondItem="IYY-6o-Yge" secondAttribute="bottom" constant="8" symbolic="YES" id="QLK-N7-YWA"/>
+                                            <constraint firstItem="n2j-vr-o1k" firstAttribute="top" secondItem="NuA-7i-7GG" secondAttribute="bottom" constant="8" symbolic="YES" id="R8O-3U-T0T"/>
+                                            <constraint firstAttribute="trailing" secondItem="n2j-vr-o1k" secondAttribute="trailing" constant="15" id="Wjk-ss-l4f"/>
+                                            <constraint firstAttribute="trailing" secondItem="IYY-6o-Yge" secondAttribute="trailing" constant="15" id="dgr-tm-Zwd"/>
+                                            <constraint firstAttribute="trailing" secondItem="IQ4-d5-5Cc" secondAttribute="trailing" id="iHb-qj-VuX"/>
+                                            <constraint firstItem="NuA-7i-7GG" firstAttribute="centerX" secondItem="lLL-qK-Zje" secondAttribute="centerX" id="mqj-eS-BvO"/>
+                                            <constraint firstItem="IYY-6o-Yge" firstAttribute="leading" secondItem="lLL-qK-Zje" secondAttribute="leading" constant="15" id="zcL-Rz-PCR"/>
                                         </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Apolo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-6o-Yge">
-                                        <rect key="frame" x="15" y="225" width="290" height="20"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-7i-7GG">
-                                        <rect key="frame" x="140" y="250" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ktw-Or-QDr"/>
-                                            <constraint firstAttribute="height" constant="40" id="qX8-7i-2dY"/>
-                                        </constraints>
-                                        <state key="normal" image="icon_favorite_off"/>
-                                        <connections>
-                                            <action selector="setFavorite:" destination="r4S-V9-BrI" eventType="touchUpInside" id="nKT-n1-yP8"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Apolo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-vr-o1k">
-                                        <rect key="frame" x="15" y="298" width="290" height="16.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="NuA-7i-7GG" firstAttribute="top" secondItem="IYY-6o-Yge" secondAttribute="bottom" constant="5" id="5AD-1v-eiC"/>
-                                    <constraint firstAttribute="trailing" secondItem="IYY-6o-Yge" secondAttribute="trailing" constant="15" id="66T-9o-8nd"/>
-                                    <constraint firstItem="IYY-6o-Yge" firstAttribute="top" secondItem="IQ4-d5-5Cc" secondAttribute="bottom" constant="8" symbolic="YES" id="AGe-ba-CaA"/>
-                                    <constraint firstItem="n2j-vr-o1k" firstAttribute="top" secondItem="NuA-7i-7GG" secondAttribute="bottom" constant="8" symbolic="YES" id="FDQ-u8-bYz"/>
-                                    <constraint firstItem="IQ4-d5-5Cc" firstAttribute="top" secondItem="f9m-fa-Np3" secondAttribute="top" id="JRW-9b-fgk"/>
-                                    <constraint firstItem="n2j-vr-o1k" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" constant="15" id="LZZ-pZ-RKG"/>
-                                    <constraint firstItem="IQ4-d5-5Cc" firstAttribute="centerX" secondItem="f9m-fa-Np3" secondAttribute="centerX" id="SuT-94-R7a"/>
-                                    <constraint firstAttribute="trailing" secondItem="IQ4-d5-5Cc" secondAttribute="trailing" id="Xu5-wf-whE"/>
-                                    <constraint firstItem="IQ4-d5-5Cc" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" id="YB3-QN-yA8"/>
-                                    <constraint firstItem="IYY-6o-Yge" firstAttribute="leading" secondItem="f9m-fa-Np3" secondAttribute="leading" constant="15" id="le2-JO-xtP"/>
-                                    <constraint firstAttribute="trailing" secondItem="n2j-vr-o1k" secondAttribute="trailing" constant="15" id="tqT-XC-llg"/>
-                                    <constraint firstItem="NuA-7i-7GG" firstAttribute="centerX" secondItem="f9m-fa-Np3" secondAttribute="centerX" id="zCy-lQ-N3g"/>
+                                    <constraint firstItem="lLL-qK-Zje" firstAttribute="bottom" secondItem="4ik-b2-3ru" secondAttribute="bottom" id="bhA-bd-eDL"/>
+                                    <constraint firstItem="lLL-qK-Zje" firstAttribute="trailing" secondItem="4ik-b2-3ru" secondAttribute="trailing" id="dbn-Ya-bsR"/>
+                                    <constraint firstItem="lLL-qK-Zje" firstAttribute="top" secondItem="4ik-b2-3ru" secondAttribute="top" id="jZD-6R-785"/>
+                                    <constraint firstItem="lLL-qK-Zje" firstAttribute="width" secondItem="s7a-Fr-5oU" secondAttribute="width" id="o7v-dZ-EQG"/>
+                                    <constraint firstItem="lLL-qK-Zje" firstAttribute="leading" secondItem="4ik-b2-3ru" secondAttribute="leading" id="yFN-2H-hQM"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="4ik-b2-3ru"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="s7a-Fr-5oU"/>
