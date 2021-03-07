@@ -17,6 +17,7 @@ class DetailApoloViewController: UIViewController
     
     var apoloItem: ApoloModel = ApoloModel()
     var delegate: ApoloListViewProtocol?
+    var indexPath = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class DetailApoloViewController: UIViewController
     @IBAction func setFavorite(_ sender: Any)
     {
         apoloItem.apoloIsFavorite = !apoloItem.apoloIsFavorite!
-        delegate?.updateFavoriteInList(name: apoloItem.apoloTitle!, isFavorite: apoloItem.apoloIsFavorite!)
+        delegate?.updateFavoriteInRow(name: apoloItem.apoloTitle!, isFavorite: apoloItem.apoloIsFavorite!, indexPath: self.indexPath)
         
         self.setFavoriteButton(buttonState: apoloItem.apoloIsFavorite!)
     }

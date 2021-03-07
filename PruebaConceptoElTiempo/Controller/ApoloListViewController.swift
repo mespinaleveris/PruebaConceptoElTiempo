@@ -11,7 +11,7 @@ import MBProgressHUD
 
 protocol ApoloListViewProtocol
 {
-    func updateFavoriteInList(name: String, isFavorite: Bool)
+    func updateFavoriteInRow(name: String, isFavorite: Bool, indexPath: IndexPath)
 }
 
 class ApoloListViewController: UIViewController
@@ -23,6 +23,7 @@ class ApoloListViewController: UIViewController
     var searchedApoloList: [ApoloModel] = [];
     var searching: Bool = false
     var filtered:[String] = []
+    var indexPath = IndexPath()
     
     var apoloItemSelected = ApoloModel()
     
@@ -30,6 +31,7 @@ class ApoloListViewController: UIViewController
         super.viewDidLoad()
         
         self.apoloListTableView.alwaysBounceVertical = true
+        self.apoloListSearchBar.showsCancelButton = true
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
@@ -62,6 +64,7 @@ extension ApoloListViewController: UISearchBarDelegate
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""
+        searchBar.resignFirstResponder()
         apoloListTableView.reloadData()
     }
 }
@@ -105,9 +108,10 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         let apoloData: ApoloDataModel = (apoloItem.apoloDataList?[0])!
         let apoloLinkList: [ApoloLinksModel] = apoloItem.apoloLinks ?? []
         
-        
-        cell.apoloTitle.text = apoloData.apoloDataTitle ?? ""
-        cell.apoloFavoriteButton.setImage(UIImage(named: apoloItem.apoloIsFavorite! ? "icon_favorite_on" : "icon_favorite_off"), for: .normal)
+        cell.delegate = self
+        cell.indexPath = indexPath
+        cell.titleText = apoloData.apoloDataTitle ?? ""
+        cell.isFavorite = apoloItem.apoloIsFavorite!
         
         if let apoloLink = apoloLinkList.filter({ $0.apoloLinkRel == "preview" }).first
         {
@@ -127,10 +131,12 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         if self.searching
         {
             self.apoloItemSelected = self.searchedApoloList[indexPath.row]
+            self.indexPath = indexPath
         }
         else
         {
             self.apoloItemSelected = self.apoloList[indexPath.row]
+            self.indexPath = indexPath
         }
         
         performSegue(withIdentifier: "segueToDetailApolo", sender: self)
@@ -211,22 +217,9 @@ extension ApoloListViewController
     }
 }
 
-extension ApoloListViewController
-{
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.identifier == "segueToDetailApolo"
-        {
-            let detailApoloViewController = segue.destination as! DetailApoloViewController
-            //detailApoloViewController.delegate = self
-            detailApoloViewController.apoloItem = self.apoloItemSelected
-        }
-    }
-}
-
 extension ApoloListViewController: ApoloListViewProtocol
 {
-    func updateFavoriteInList(name: String, isFavorite: Bool)
+    func updateFavoriteInRow(name: String, isFavorite: Bool, indexPath: IndexPath)
     {
         for i in 0..<self.apoloList.count
         {
@@ -238,9 +231,36 @@ extension ApoloListViewController: ApoloListViewProtocol
             }
         }
         
-        //self.apoloListSearchBar.set
-        //self.searching = false
-        self.apoloListTableView.reloadData()
+        if searching
+        {
+            for i in 0..<self.searchedApoloList.count
+            {
+                if searchedApoloList[i].apoloTitle == name
+                {
+                    searchedApoloList[i].apoloIsFavorite = isFavorite
+                    
+                    break
+                }
+            }
+        }
+        
+        ApoloModel.saveApoloList(apoloList: self.apoloList)
+        
+        self.apoloListTableView.reloadRows(at: [indexPath], with: .none)
+    }
+}
+
+extension ApoloListViewController
+{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "segueToDetailApolo"
+        {
+            let detailApoloViewController = segue.destination as! DetailApoloViewController
+            detailApoloViewController.delegate = self
+            detailApoloViewController.indexPath = self.indexPath
+            detailApoloViewController.apoloItem = self.apoloItemSelected
+        }
     }
 }
 

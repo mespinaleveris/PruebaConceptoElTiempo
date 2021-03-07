@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1059" y="41"/>
         </scene>
-        <!--Apolo List View Controller-->
+        <!--Apolo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ApoloListViewController" id="BYZ-38-t0r" customClass="ApoloListViewController" customModule="PruebaConceptoElTiempo" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,7 +117,7 @@
                             <constraint firstItem="v1P-hS-Fgg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zEv-qw-iak"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dfJ-CH-gRz"/>
+                    <navigationItem key="navigationItem" title="Apolo" id="dfJ-CH-gRz"/>
                     <connections>
                         <outlet property="apoloListSearchBar" destination="v1P-hS-Fgg" id="3un-Va-fqE"/>
                         <outlet property="apoloListTableView" destination="6Le-aC-4vs" id="InN-eM-kqF"/>
@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="-172.5" y="41.197183098591552"/>
         </scene>
-        <!--Detail Apolo View Controller-->
+        <!--Detalle-->
         <scene sceneID="HsG-fI-jlD">
             <objects>
                 <viewController storyboardIdentifier="DetailApoloViewController" id="r4S-V9-BrI" customClass="DetailApoloViewController" customModule="PruebaConceptoElTiempo" customModuleProvider="target" sceneMemberID="viewController">
@@ -196,7 +196,7 @@
                             <constraint firstItem="f9m-fa-Np3" firstAttribute="top" secondItem="Sem-Qh-KB4" secondAttribute="top" id="wg5-dO-Fco"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QK4-Je-4xr"/>
+                    <navigationItem key="navigationItem" title="Detalle" id="QK4-Je-4xr"/>
                     <connections>
                         <outlet property="apoloDescLabel" destination="n2j-vr-o1k" id="GNy-FF-skh"/>
                         <outlet property="apoloFavoriteButton" destination="NuA-7i-7GG" id="4OA-cS-nRf"/>
