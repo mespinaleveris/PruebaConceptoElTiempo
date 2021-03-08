@@ -19,6 +19,7 @@
 		81AF57DD25F2ABB5006FC0A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AF57DB25F2ABB5006FC0A4 /* LaunchScreen.storyboard */; };
 		81AF57E825F2ABB5006FC0A4 /* PruebaConceptoElTiempoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57E725F2ABB5006FC0A4 /* PruebaConceptoElTiempoTests.swift */; };
 		81AF57F325F2ABB5006FC0A4 /* PruebaConceptoElTiempoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF57F225F2ABB5006FC0A4 /* PruebaConceptoElTiempoUITests.swift */; };
+		81EBB7AB25F58FA500695864 /* ApoloViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EBB7AA25F58FA500695864 /* ApoloViewModel.swift */; };
 		EE742FE474BCA41A3FF0D495 /* Pods_PruebaConceptoElTiempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEA0C6D2EF93B9BEE7D5735 /* Pods_PruebaConceptoElTiempo.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		81AF57EE25F2ABB5006FC0A4 /* PruebaConceptoElTiempoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PruebaConceptoElTiempoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AF57F225F2ABB5006FC0A4 /* PruebaConceptoElTiempoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaConceptoElTiempoUITests.swift; sourceTree = "<group>"; };
 		81AF57F425F2ABB5006FC0A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81EBB7AA25F58FA500695864 /* ApoloViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoloViewModel.swift; sourceTree = "<group>"; };
 		B430D1385456D9FD52404BA3 /* Pods-PruebaConceptoElTiempo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PruebaConceptoElTiempo.release.xcconfig"; path = "Target Support Files/Pods-PruebaConceptoElTiempo/Pods-PruebaConceptoElTiempo.release.xcconfig"; sourceTree = "<group>"; };
 		DF945DF2CBAFB35BD9D2B857 /* Pods-PruebaConceptoElTiempo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PruebaConceptoElTiempo.debug.xcconfig"; path = "Target Support Files/Pods-PruebaConceptoElTiempo/Pods-PruebaConceptoElTiempo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +201,7 @@
 		81AF586625F2F918006FC0A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				81EBB7AA25F58FA500695864 /* ApoloViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				81AF57D125F2ABB4006FC0A4 /* AppDelegate.swift in Sources */,
 				81AF57D325F2ABB4006FC0A4 /* SceneDelegate.swift in Sources */,
 				8108878425F35CB2003E886C /* DetailApoloViewController.swift in Sources */,
+				81EBB7AB25F58FA500695864 /* ApoloViewModel.swift in Sources */,
 				8108877525F32273003E886C /* ApoloViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

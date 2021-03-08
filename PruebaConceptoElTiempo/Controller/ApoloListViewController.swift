@@ -19,15 +19,29 @@ class ApoloListViewController: UIViewController
     @IBOutlet weak var apoloListTableView: UITableView!
     @IBOutlet weak var apoloListSearchBar: UISearchBar!
     
-    var apoloList: [ApoloModel] = [];
-    var searchedApoloList: [ApoloModel] = [];
+    private(set) var apoloViewModel: ApoloViewModel?
+    
+    var apoloList: [ApoloModel] = [] {
+        didSet {
+            self.apoloViewModel = ApoloViewModel.init(apoloList: apoloList)
+            
+            DispatchQueue.main.async {
+                ApoloModel.saveApoloList(apoloList: self.apoloViewModel?.apoloList)
+                self.apoloListTableView.reloadData()
+            }
+        }
+    }
+    
+    
+    var searchedApoloList: [ApoloModel] = []
     var searching: Bool = false
     var filtered:[String] = []
     var indexPath = IndexPath()
     
     var apoloItemSelected = ApoloModel()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         self.apoloListTableView.alwaysBounceVertical = true
@@ -37,10 +51,9 @@ class ApoloListViewController: UIViewController
         
         self.getSavedList()
     }
-
-    
 }
 
+// SearchBar Delegate
 extension ApoloListViewController: UISearchBarDelegate
 {
     
@@ -48,7 +61,7 @@ extension ApoloListViewController: UISearchBarDelegate
     {
         self.searchedApoloList.removeAll()
         
-        for apoloItem in self.apoloList
+        for apoloItem in (self.apoloViewModel?.apoloList)!
         {
             if apoloItem.apoloKeywords!.filter({ $0.lowercased().prefix(searchText.count) == searchText.lowercased() }).count > 0
             {
@@ -69,6 +82,7 @@ extension ApoloListViewController: UISearchBarDelegate
     }
 }
 
+// TableView Delegate
 extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
 {
     func numberOfSections(in tableView: UITableView) -> Int
@@ -98,7 +112,7 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         }
         else
         {
-            apoloItem = self.apoloList[indexPath.row]
+            apoloItem = (self.apoloViewModel?.apoloList[indexPath.row])!
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApoloViewCell", for: indexPath) as! ApoloViewCell
@@ -135,7 +149,7 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
         }
         else
         {
-            self.apoloItemSelected = self.apoloList[indexPath.row]
+            self.apoloItemSelected = (self.apoloViewModel?.apoloList[indexPath.row])!
             self.indexPath = indexPath
         }
         
@@ -148,6 +162,7 @@ extension ApoloListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+// Get Data Methods
 extension ApoloListViewController
 {
     func getSavedList()
@@ -162,9 +177,9 @@ extension ApoloListViewController
             
             self.apoloList = apoloListFromSaved
             
-            self.apoloListTableView.reloadData()
-            
             print("LISTA CARGADA DE LA MEMORIA")
+            
+            self.apoloListTableView.reloadData()
         }
         else
         {
@@ -182,31 +197,9 @@ extension ApoloListViewController
                 MBProgressHUD.hide(for: self.view, animated: true)
             }
             
-            if var apoloList = response?.collecctionApolo?.apoloItems
+            if let apoloList = response?.collecctionApolo?.apoloItems
             {
-                for i in 0..<apoloList.count
-                {
-                    let apoloTitle = apoloList[i].apoloDataList![0].apoloDataTitle ?? ""
-                    let apoloDesc = apoloList[i].apoloDataList![0].apoloDataDesc ?? ""
-                    let apoloKeywords = apoloList[i].apoloDataList![0].apoloDataKewords ?? []
-                    var apoloImageUrl = ""
-                    
-                    if let apoloLink = apoloList[i].apoloLinks?.filter({ $0.apoloLinkRel == "preview" }).first
-                    {
-                        apoloImageUrl = apoloLink.apoloLinkUrl ?? ""
-                    }
-                    
-                    apoloList[i].apoloTitle = apoloTitle
-                    apoloList[i].apoloDesc = apoloDesc
-                    apoloList[i].apoloKeywords = apoloKeywords
-                    apoloList[i].apoloImageUrl = apoloImageUrl
-                    apoloList[i].apoloIsFavorite = false
-                }
-                
                 self.apoloList = apoloList
-                ApoloModel.saveApoloList(apoloList: self.apoloList)
-                
-                self.apoloListTableView.reloadData()
             }
             
             if let error = error
@@ -217,19 +210,12 @@ extension ApoloListViewController
     }
 }
 
+// Favorite protocol
 extension ApoloListViewController: ApoloListViewProtocol
 {
     func updateFavoriteInRow(name: String, isFavorite: Bool, indexPath: IndexPath)
     {
-        for i in 0..<self.apoloList.count
-        {
-            if apoloList[i].apoloTitle == name
-            {
-                apoloList[i].apoloIsFavorite = isFavorite
-                
-                break
-            }
-        }
+        self.apoloViewModel?.updateFavorite(name: name, isFavorite: isFavorite)
         
         if searching
         {
@@ -244,12 +230,16 @@ extension ApoloListViewController: ApoloListViewProtocol
             }
         }
         
-        ApoloModel.saveApoloList(apoloList: self.apoloList)
+        DispatchQueue.main.async {
+            
+            ApoloModel.saveApoloList(apoloList: self.apoloViewModel?.apoloList)
+            self.apoloListTableView.reloadRows(at: [indexPath], with: .none)
+        }
         
-        self.apoloListTableView.reloadRows(at: [indexPath], with: .none)
     }
 }
 
+// Prepare for Segue
 extension ApoloListViewController
 {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
