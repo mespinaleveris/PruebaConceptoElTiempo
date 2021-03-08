@@ -56,7 +56,6 @@ class ApoloListViewController: UIViewController
 // SearchBar Delegate
 extension ApoloListViewController: UISearchBarDelegate
 {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         self.searchedApoloList.removeAll()
@@ -74,11 +73,9 @@ extension ApoloListViewController: UISearchBarDelegate
         apoloListTableView.reloadData()
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
-        searchBar.text = ""
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+    {
         searchBar.resignFirstResponder()
-        apoloListTableView.reloadData()
     }
 }
 
